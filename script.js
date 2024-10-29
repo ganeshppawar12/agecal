@@ -1,7 +1,12 @@
 function calculateAge() {
     const birthdate = document.getElementById("birthdate").value;
+    const years = document.getElementById("years");
+    const months = document.getElementById("months");
+    const days  = document.getElementById("days");
     if (birthdate === "") {
-        document.getElementById("result").innerHTML = "Please select a date.";
+        document.getElementById("error").style.display = 'block'
+        document.getElementById("error").innerHTML = "Please select a date.";
+        setTimeout(()=>document.getElementById("error").style.display = 'none' ,1000)
         return;
     }
 
@@ -15,6 +20,8 @@ function calculateAge() {
     if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
         age--;
     }
-
-    document.getElementById("result").innerHTML = "You are " + age + " years old.";
+   years.innerHTML = age;
+   months.innerHTML = monthDiff;
+   days.innerHTML =dayDiff
+    // document.getElementById("result").innerHTML = "You are " + age + " years old.";
 }
